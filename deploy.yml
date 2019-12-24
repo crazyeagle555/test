@@ -3,12 +3,6 @@
   gather_facts: No
   hosts: All
 
-  tasks:
-    - name: Install nginx
-      yum:
-        name: nginx
-        state: latest
-
     - name: Copying nginx.conf
       copy:
         src: nginx.conf
