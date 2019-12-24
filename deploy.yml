@@ -33,6 +33,9 @@
         repo: 'https://github.com/mbaran0v/python-sample-app.git'
         dest: /home/user
         update: yes  # Does a git pull if the repo already exists
+    
+    - pip:
+    requirements: /home/user/requirements.txt    
         
     - name: Create systemd service 
       copy:
