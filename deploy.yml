@@ -17,6 +17,16 @@
         name: "ius"
         description: "ius yum repository"
         baseurl: "https://centos7.iuscommunity.org/ius-release.rpm"
+  
+    - name: Install Python 3.6
+      yum:
+        name:
+          - python36u
+          - python36u-devel
+          - python36u-pip
+          - libpq-dev
+          - gcc
+        state: present    
 
     - name: clone repo
       git:
