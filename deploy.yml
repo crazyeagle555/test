@@ -1,0 +1,27 @@
+---
+- name: Install Python-APP
+  gather_facts: No
+  hosts: All
+
+  tasks:
+    - name: Install nginx
+      yum:
+        name: nginx
+        state: latest
+
+    - name: Copying nginx.conf
+      copy:
+        src: nginx.conf
+        dest: /etc/nginx
+        follow: yes
+
+    - name: restart nginx
+        systemd: name=nginx state=restarted enabled=yes
+
+    - name: clone repo
+      git:
+        repo: 'https://github.com/mbaran0v/python-sample-app.git'
+        dest: /home/user
+        update: yes  # Does a git pull if the repo already exists
+
+
