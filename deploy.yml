@@ -2,7 +2,8 @@
 - name: Install Python-APP
   gather_facts: No
   hosts: All
-
+ 
+  tasks:
     - name: Copying nginx.conf
       copy:
         src: nginx.conf
