@@ -35,7 +35,8 @@
         update: yes  # Does a git pull if the repo already exists
     
     - pip:
-    requirements: /home/user/requirements.txt    
+    requirements: /home/user/requirements.txt  
+    executable: pip3.6
         
     - name: Create systemd service 
       copy:
