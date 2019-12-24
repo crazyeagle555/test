@@ -23,5 +23,10 @@
         repo: 'https://github.com/mbaran0v/python-sample-app.git'
         dest: /home/user
         update: yes  # Does a git pull if the repo already exists
-
-
+        
+    - name: Create systemd service 
+      copy:
+        src: .service
+        dest: /etc/systemd/system/TestApp.service
+    - name: start systemd app service
+        systemd: name=TestApp.service state=restarted enabled=yes
