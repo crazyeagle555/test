@@ -11,6 +11,12 @@
 
     - name: restart nginx
         systemd: name=nginx state=restarted enabled=yes
+    
+    - name: Install ius repo
+      yum_repository:
+        name: "ius"
+        description: "ius yum repository"
+        baseurl: "https://centos7.iuscommunity.org/ius-release.rpm"
 
     - name: clone repo
       git:
