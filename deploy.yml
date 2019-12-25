@@ -4,6 +4,7 @@
   hosts: All
  
   tasks:
+  
     - name: Copying nginx.conf
       copy:
         src: nginx.conf
@@ -36,12 +37,13 @@
         update: yes  # Does a git pull if the repo already exists
     
     - pip:
-    requirements: /home/user/requirements.txt  
-    executable: pip3.6
+        requirements: /home/user/requirements.txt  
+        executable: pip3.6
         
     - name: Create systemd service 
       copy:
         src: .service
         dest: /etc/systemd/system/TestApp.service
+        
     - name: start systemd app service
         systemd: name=TestApp.service state=restarted enabled=yes
