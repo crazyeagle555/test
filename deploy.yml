@@ -14,8 +14,8 @@
     - name: restart nginx
         systemd:
          name: nginx
-         state=restarted
-         enabled=yes
+         state: restarted
+         enabled: yes
     
     - name: Install ius repo
       yum_repository:
@@ -70,7 +70,10 @@
         dest: /etc/systemd/system/TestApp.service
         
     - name: start systemd app service
-        systemd: name=TestApp.service state=restarted enabled=yes
+        systemd:
+        name: TestApp.service
+        state: restarted
+        enabled: yes
         
     - name: Run application:
       shell: export FLASK_APP=app.py
