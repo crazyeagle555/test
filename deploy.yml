@@ -19,7 +19,28 @@
         name: "ius"
         description: "ius yum repository"
         baseurl: "https://centos7.iuscommunity.org/ius-release.rpm"
-  
+    
+    - name: Install PostgreSQL
+      yum:
+        name:
+          - postgresql
+          - postgresql-contrib
+          - postgresql-server-dev-10
+          - python-psycopg2
+        state: present
+    
+    - name: Create test database
+      postgresql_db:
+        name: test    
+    
+    - name Create a PostgreSQL database user
+      postgresql_user:
+        db: test
+        name=test_user
+        password=DMg00LhU
+        priv: "CONNECT/products:ALL"
+        expires: infinity 
+      
     - name: Install Python 3.6
       yum:
         name:
