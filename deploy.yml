@@ -5,7 +5,7 @@
  
   tasks:
   
-    - name: Copying nginx.conf
+    - name: Copying .nginx
       copy:
         src: nginx.conf
         dest: /etc/nginx
