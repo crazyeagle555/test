@@ -68,3 +68,10 @@
         
     - name: start systemd app service
         systemd: name=TestApp.service state=restarted enabled=yes
+        
+    - name: Run application:
+      shell: export FLASK_APP=app.py
+             export POSTGRESQL_URL=postgresql://test_user:DMg00LhU@127.0.0.1/app
+             flask db upgrade
+      args:
+         chdir: /home/test
