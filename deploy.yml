@@ -36,7 +36,7 @@
       postgresql_db:
         name: test    
     
-    - name Create a PostgreSQL database user
+    - name: Create a PostgreSQL database user
       postgresql_user:
         db: test
         name=test_user
