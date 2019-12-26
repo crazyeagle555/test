@@ -99,6 +99,11 @@
       copy:
         src: .service
         dest: /etc/systemd/system/TestApp.service
+    
+    - service:
+        name: TestApp.service
+        state: started
+        enabled: yes 
 
     - name: Run application
       shell: export FLASK_APP=app.py
