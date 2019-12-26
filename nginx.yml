@@ -7,25 +7,25 @@
   tasks:
   
   - name: Add Epel repository
-      yum_repository:
-        name: epel
-        description: EPEL YUM repo
-        baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
-        gpgcheck: no
+    yum_repository:
+      name: epel
+      description: EPEL YUM repo
+      baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
+      gpgcheck: no
 
-   - name: Install Nginx
-      yum:
-        name:
-          - nginx
-        state: present
+  - name: Install Nginx
+    yum:
+      name:
+        - nginx
+      state: present
 
-    - name: Copy Nginx config file
-      copy:
-        src: nginx.conf
-        dest: /etc/nginx
-        follow: yes     
+  - name: Copy Nginx config file
+    copy:
+      src: nginx.conf
+      dest: /etc/nginx
+      follow: yes     
     
-    - service:
-        name: nginx
-        state: started
-        enabled: yes 
+  - service:
+      name: nginx
+      state: started
+      enabled: yes 
