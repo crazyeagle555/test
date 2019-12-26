@@ -6,7 +6,7 @@
 
   tasks:
 
-    - name: Add repository
+    - name: Add Epel repository
       yum_repository:
         name: epel
         description: EPEL YUM repo
@@ -30,6 +30,17 @@
           - nginx
         state: present
 
+    - name: Copy Nginx config file
+      copy:
+        src: nginx.conf
+        dest: /etc/nginx
+        follow: yes     
+    
+    - service:
+        name: nginx
+        state: started
+        enabled: yes 
+
     - name: Install PostgreSQL
       yum:
         name:
@@ -44,7 +55,8 @@
     - service:
         name: postgresql-11
         state: started
-
+        enabled: yes
+        
     - name: Install Python 3.6
       yum:
         name:
