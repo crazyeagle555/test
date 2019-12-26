@@ -1,0 +1,34 @@
+---
+- name: Install PostgreSQL
+  gather_facts: No
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+
+    - name: Install Python repo
+      yum:
+        name:
+          - centos-release-scl
+        state: present
+
+    - name: Install PostgreSQL repo
+      yum:
+        name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+        state: present
+        
+    - name: Install PostgreSQL
+      yum:
+        name:
+          - postgresql11
+          - postgresql-contrib
+          - postgresql11-server
+        state: present
+
+    - name: Init database
+      command: /usr/pgsql-11/bin/postgresql-11-setup initdb
+
+    - service:
+        name: postgresql-11
+        state: started
+        enabled: yes
