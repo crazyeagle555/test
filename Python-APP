@@ -30,22 +30,26 @@
     
     - pip:
         name: gunicorn
-        executable" pip3.6
+        executable: pip3.6
 
     - pip:
         name: psycopg2
         executable: pip
 
     - name: Create test database
+      become: true
+      become_user: postgres
       postgresql_db:
         name: test
 
     - name: Create a PostrgeSQL database user
+      become: true
+      become_user: postgres 
+      encrypted: true
       postgresql_user:
         db: test
         name: test_user
-        password: DMg00LhU
-        priv: "ALL/products:ALL"
+        password: md59547825b576517549329fbe5eeb199fb
         expires: infinity
         
     - name: Run application
