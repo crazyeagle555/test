@@ -1,5 +1,0 @@
-# Install a PostgeSQL from the Ansible Galaxy
-- src: ANXS.postgresql
-  version: 1.10.0
-# Install NGINX server from Ansible Galaxy
-- src: nginxinc.nginx
