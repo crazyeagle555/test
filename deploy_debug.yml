@@ -13,10 +13,15 @@
         baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
         gpgcheck: no
 
-    - name: Install Py Repo
+    - name: Install Python repo
       yum:
         name:
           - centos-release-scl
+        state: present
+
+    - name: Install PostgreSQL repo
+      yum:
+        name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
         state: present
 
     - name: Install Nginx
@@ -30,7 +35,15 @@
         name:
           - postgresql11
           - postgresql-contrib
+          - postgresql11-server
         state: present
+
+    - name: Init database
+      command: /usr/pgsql-11/bin/postgresql-11-setup initdb
+
+    - service:
+        name: postgresql-11
+        state: started
 
     - name: Install Python 3.6
       yum:
@@ -41,6 +54,7 @@
           - gcc
           - postgresql-devel
           - python-pip
+          - python-devel
         state: present
 
     - name: clone repo
@@ -53,8 +67,8 @@
         requirements: /home/user/1/requirements.txt
         executable: pip3.6
 
- - pip:
-        requirements: /home/user/1/requirements.txt
+    - pip:
+        name: psycopg2
         executable: pip
 
     - name: Create test database
@@ -80,4 +94,3 @@
              flask db upgrade
       args:
          chdir: /home/test
-
