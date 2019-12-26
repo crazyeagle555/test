@@ -78,6 +78,10 @@
     - pip:
         requirements: /home/user/1/requirements.txt
         executable: pip3.6
+    
+    - pip:
+        name: gunicorn
+        executable" pip3.6
 
     - pip:
         name: psycopg2
