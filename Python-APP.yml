@@ -6,12 +6,17 @@
 
   tasks:
   
+    - name: Create new group
+      group:
+        name: www-data
+        state: present
+    
     - name: Add test_user
       user: 
-      name: test_user
-      shell: /bin/bash
-      groups: www-data
-      append: yes
+        name: test_user
+        shell: /bin/bash
+        groups: www-data
+        append: yes        
 
     - name: Install Python 3.6
       yum:
