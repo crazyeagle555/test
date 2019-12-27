@@ -38,10 +38,12 @@
         
     - name: Change file ownership, group and permissions
       file:
-        path: /home/test_user/app
+        path: /home/test_user
         owner: test_user
-        group: www-data
-        mode: '755'    
+        group: test-user
+        state: directory
+        recurse: yes
+        mode: '0755'    
         
     - pip:
         requirements: /home/test_user/app/requirements.txt
