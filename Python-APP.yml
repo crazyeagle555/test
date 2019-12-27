@@ -5,6 +5,13 @@
   connection: local
 
   tasks:
+  
+    - name: Add test_user
+      user: 
+      name: test_user
+      shell: /bin/bash
+      groups: www-data
+      append: yes
 
     - name: Install Python 3.6
       yum:
@@ -21,11 +28,18 @@
     - name: clone repo
       git:
         repo: 'https://github.com/mbaran0v/python-sample-app.git'
-        dest: /home/user/1
+        dest: /home/test_user/app
         update: yes  # Does a git pull if the repo already exists
-
+        
+    - name: Change file ownership, group and permissions
+      file:
+        path: /home/test_user/app
+        owner: test_user
+        group: www-data
+        mode: '755'    
+        
     - pip:
-        requirements: /home/user/1/requirements.txt
+        requirements: /home/test_user/app/requirements.txt
         executable: pip3.6
     
     - pip:
@@ -57,7 +71,7 @@
              export POSTGRESQL_URL=postgresql://test_user:DMg00LhU@127.0.0.1/app
              flask db upgrade
       args:
-        chdir: /home/user/1
+        chdir: /home/test_user/app
 
     - name: Create systemd service
       copy:
