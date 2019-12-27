@@ -6,7 +6,7 @@
 
   tasks:
   
-  - name: Set SeLinux permissive mode
+  - name: Set SELinux permissive mode
     selinux:
       policy: targeted
       state: permissive
