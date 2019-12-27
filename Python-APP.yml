@@ -8,7 +8,7 @@
   
     - name: Create new group
       group:
-        name: www-data
+        name: test-user
         state: present
     
     - name: Add test_user
