@@ -4,12 +4,13 @@ After=network.target
 
 [Service]
 User=test_user
-Group=users
+#Group=users
+Group=www-data
 PIDFile = /run/PythonTestApplication/PytSample.pid
 WorkingDirectory=/home/user/1
 Environment=POSTGRESQL_URL=postgresql://test_user:DMg00LhU@127.0.0.1/app
 Environment=FLASK_APP=app.py
-ExecStart = /home/test_user/1/env/bin/gunicorn app:api -b 0.0.0.0:5000 --pid /run/PythonTestApplication/PytSample.pid
+ExecStart = /home/test_user/1/bin/gunicorn app:api -b 0.0.0.0:5000 --pid /run/PythonTestApplication/PytSample.pid
 
 [Install]
 WantedBy=multi-user.target
