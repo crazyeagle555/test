@@ -15,7 +15,7 @@
       user: 
         name: test_user
         shell: /bin/bash
-        groups: www-data
+        groups: test-user
         append: yes        
 
     - name: Install Python 3.6
