@@ -6,6 +6,15 @@
 
   tasks:
   
+  - name: Set SeLinux permissive mode
+    selinux:
+      policy: targeted
+      state: permissive
+
+  - name: Disable SELinux
+    selinux:
+      state: disabled
+  
   - name: Add Epel repository
     yum_repository:
       name: epel
