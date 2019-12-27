@@ -10,7 +10,7 @@ PIDFile = /run/PythonTestApplication/PytSample.pid
 WorkingDirectory=/home/test_user/app
 Environment=POSTGRESQL_URL=postgresql://test_user:DMg00LhU@127.0.0.1/app
 Environment=FLASK_APP=app.py
-ExecStart = /home/test_user/app/usr/local/bin/gunicorn app:api -b 0.0.0.0:5000 --pid /run/PythonTestApplication/PytSample.pid
+ExecStart = /home/test_user/app/usr/local/bin/gunicorn --bind 0.0.0.0:5000  app:api
 
 [Install]
 WantedBy=multi-user.target
