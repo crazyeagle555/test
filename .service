@@ -7,9 +7,9 @@ User=test_user
 Group=users
 PIDFile = /run/PythonTestApplication/PytSample.pid
 WorkingDirectory=/home/user/1
-Environment="PATH=/home/{{ ansible_ssh_user }}/{{ app_name }}/env/bin"
-ExecStart = /usr/bin/env gunicorn sample:app -b 0.0.0.0:5000 --pid /run/PythonTestApplication/PytSample.pid
-ExecStart=/home/{{ ansible_ssh_user }}/{{ app_name }}/env/bin/gunicorn --workers 3 --bind unix:{{ app_name }}.sock -m 007 wsgi:app
+Environment=POSTGRESQL_URL=postgresql://test_user:DMg00LhU@127.0.0.1/app
+Environment=FLASK_APP=app.py
+ExecStart = /home/test_user/1/env/bin/gunicorn app:api -b 0.0.0.0:5000 --pid /run/PythonTestApplication/PytSample.pid
 
 [Install]
 WantedBy=multi-user.target
