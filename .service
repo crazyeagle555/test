@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=test_user
 #Group=users
-Group=www-data
+Group=test-user
 PIDFile = /run/PythonTestApplication/PytSample.pid
 WorkingDirectory=/home/test_user/app
 Environment=POSTGRESQL_URL=postgresql://test_user:DMg00LhU@127.0.0.1/app
