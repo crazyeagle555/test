@@ -5,22 +5,3 @@
   become: true
   roles:
     - default_packages
-
-    - name: clone repo
-      git:
-        repo: 'https://github.com/mbaran0v/python-sample-app.git'
-        dest: /home/test_user/app
-        update: yes  # Does a git pull if the repo already exists
-        
-    - name: Change file ownership, group and permissions
-      file:
-        path: /home/test_user
-        owner: test_user
-        group: test-user
-        state: directory
-        recurse: yes
-        mode: '0755'    
-        
-    - pip:
-        requirements: /home/test_user/app/requirements.txt
-        executable: pip3.6
