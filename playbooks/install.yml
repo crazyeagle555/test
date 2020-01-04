@@ -6,7 +6,7 @@
   roles:
     - { role: ANXS.postgresql }
   vars_files:
-    - "{{inventory_dir}}/vars.yml"
+    - "{{inventory_dir}}/postgresql.yml"
 
 - name: Configure nginx server
   hosts: 127.0.0.1
@@ -15,4 +15,4 @@
   roles:
     - { role: nginxinc.nginx }
   vars_files:
-    - "{{inventory_dir}}/play_vars/nginx.yml"
+    - "{{inventory_dir}}/nginx.yml"
