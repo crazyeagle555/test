@@ -15,4 +15,4 @@
   roles:
     - { role: nginxinc.nginx }
   vars_files:
-    - "{{inventory_dir}}/nginx.yml"
+    - "/opt/test/environments/nginx.yml"
