@@ -1,3 +1,3 @@
 Vagrant.configure("2") do |config|
-  config.vm.box = "wittman/centos-7.2-ansible"
+  config.vm.box = "jumperfly/centos-7-ansible"
 end
