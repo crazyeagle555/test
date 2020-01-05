@@ -1,0 +1,3 @@
+---
+- import_playbook: playbooks/install.yml
+- import_playbook: playbooks/default.yml
