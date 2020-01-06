@@ -1,66 +1,59 @@
 ---
-- name: Install default packages
-  hosts: 127.0.0.1
-  connection: local
-  become: true
+- name: Set SELinux permissive mode
+    selinux:
+    policy: targeted
+    state: permissive
 
-  tasks:
+- name: Disable SELinux
+    selinux:
+    state: disabled
   
-    - name: Set SELinux permissive mode
-      selinux:
-        policy: targeted
-        state: permissive
-
-    - name: Disable SELinux
-      selinux:
-        state: disabled
+- name: Add Epel repository
+  yum_repository:
+    name: epel
+    description: EPEL YUM repo
+    baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
+    gpgcheck: no
   
-    - name: Add Epel repository
-      yum_repository:
-        name: epel
-        description: EPEL YUM repo
-        baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
-        gpgcheck: no
-  
-   - name: Create new group
-     group:
-       name: test-user
-       state: present
+- name: Create new group
+  group:
+    name: test-user
+    state: present
     
-   - name: Add test_user
-     user: 
-       name: test_user
-       shell: /bin/bash
-       groups: test-user
-       append: yes    
+- name: Add test_user
+  user: 
+    name: test_user
+    shell: /bin/bash
+    groups: test-user
+    append: yes    
         
-   - name: Install Python 3.6
-     yum:
-       name:
-         - python36
-         - python36-devel
-         - python36-pip
-         - gcc
-         - postgresql-devel
-         - python-pip
-         - python-devel
-     state: present
+ - name: Install Python 3.6
+   yum:
+     name:
+       - python36
+       - python36-devel
+       - python36-pip
+       - gcc
+       - postgresql-devel
+       - python-pip
+       - python-devel
+  state: present
 
-   - name: clone repo
-     git:
-       repo: 'https://github.com/mbaran0v/python-sample-app.git'
-       dest: /home/test_user/app
-       update: yes  # Does a git pull if the repo already exists
+- name: clone repo
+  git:
+    repo: 'https://github.com/mbaran0v/python-sample-app.git'
+    dest: /home/test_user/app
+    update: yes  # Does a git pull if the repo already exists
         
-   - name: Change file ownership, group and permissions
-     file:
-       path: /home/test_user
-       owner: test_user
-       group: test-user
-       state: directory
-       recurse: yes
-       mode: '0755'    
+- name: Change file ownership, group and permissions
+  file:
+    path: /home/test_user
+    owner: test_user
+    group: test-user
+    state: directory
+    recurse: yes
+    mode: '0755'    
         
-  - pip:
-      requirements: /home/test_user/app/requirements.txt
-      executable: pip3.6
+- pip:
+    requirements: /home/test_user/app/requirements.txt
+    executable: pip3.6
