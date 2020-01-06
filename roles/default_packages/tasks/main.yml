@@ -1,11 +1,11 @@
 ---
 - name: Set SELinux permissive mode
-    selinux:
+  selinux:
     policy: targeted
     state: permissive
 
 - name: Disable SELinux
-    selinux:
+  selinux:
     state: disabled
   
 - name: Add Epel repository
@@ -27,17 +27,17 @@
     groups: test-user
     append: yes    
         
- - name: Install Python 3.6
-   yum:
-     name:
-       - python36
-       - python36-devel
-       - python36-pip
-       - gcc
-       - postgresql-devel
-       - python-pip
-       - python-devel
-  state: present
+- name: Install Python 3.6
+  yum:
+    name:
+      - python36
+      - python36-devel
+      - python36-pip
+      - gcc
+      - postgresql-devel
+      - python-pip
+      - python-devel
+ state: present
 
 - name: clone repo
   git:
