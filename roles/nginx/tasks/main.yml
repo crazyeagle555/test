@@ -4,7 +4,7 @@
     name:
       - nginx
     state: present
-    
+
 - name: Replace nginx.conf
   template:
     src=templates/nginx.conf
