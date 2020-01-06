@@ -3,7 +3,7 @@
   selinux:
     policy: targeted
     state: permissive
-
+    
 - name: Disable SELinux
   selinux:
     state: disabled
@@ -19,14 +19,14 @@
   group:
     name: test-user
     state: present
-    
+
 - name: Add test_user
-  user: 
+  user:
     name: test_user
     shell: /bin/bash
     groups: test-user
-    append: yes    
-        
+    append: yes
+
 - name: Install Python 3.6
   yum:
     name:
@@ -43,8 +43,8 @@
   git:
     repo: 'https://github.com/mbaran0v/python-sample-app.git'
     dest: /home/test_user/app
-    update: yes  # Does a git pull if the repo already exists
-        
+    update: yes
+
 - name: Change file ownership, group and permissions
   file:
     path: /home/test_user
@@ -52,8 +52,9 @@
     group: test-user
     state: directory
     recurse: yes
-    mode: '0755'    
-        
-- pip:
+    mode: '0755'
+
+- name: Install pip requrements
+  pip:
     requirements: /home/test_user/app/requirements.txt
     executable: pip3.6
