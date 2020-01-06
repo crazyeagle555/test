@@ -9,6 +9,11 @@
       name:
         - nginx
       state: present
+      
+- name: Replace nginx.conf
+  template:
+    src=templates/nginx.conf
+    dest=/etc/nginx/nginx.conf
 
 - service:
       name: nginx
