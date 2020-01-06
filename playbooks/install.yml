@@ -6,7 +6,7 @@
   roles:
     - { role: ANXS.postgresql }
   vars_files:
-    - "/opt/test/environments/postgresql.yml"
+    - "./environments/postgresql.yml"
 
 - name: Configure nginx server
   hosts: 127.0.0.1
@@ -14,3 +14,12 @@
   become: true
   roles:
     - { role: nginx }
+  vars_files:
+    - "./environments/nginx.yml"
+    
+- name: Configure PostgreSQL server
+  hosts: 127.0.0.1
+  connection: local
+  become: true
+  roles:
+    - { role: python-app } 
