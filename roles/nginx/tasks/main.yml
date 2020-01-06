@@ -1,9 +1,9 @@
 ---
 - name: Install Nginx
-    yum:
-      name:
-        - nginx
-      state: present
+  yum:
+    name:
+      - nginx
+    state: present
       
 - name: Replace nginx.conf
   template:
