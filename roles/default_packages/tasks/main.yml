@@ -37,7 +37,7 @@
       - postgresql-devel
       - python-pip
       - python-devel
- state: present
+    state: present
 
 - name: clone repo
   git:
