@@ -3,8 +3,8 @@
   yum:
     name:
       - nginx
-    state: present      
-
+    state: present
+    
 - name: Replace nginx.conf
   template:
     src=templates/nginx.conf
