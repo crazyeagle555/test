@@ -3,18 +3,18 @@
   selinux:
     policy: targeted
     state: permissive
-    
+
 - name: Disable SELinux
   selinux:
     state: disabled
-  
+
 - name: Add Epel repository
   yum_repository:
     name: epel
     description: EPEL YUM repo
     baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
     gpgcheck: no
-  
+
 - name: Create new group
   group:
     name: test-user
