@@ -19,4 +19,4 @@
   service:
     name: TestApp.service
     state: started
-    enabled: yes 
+    enabled: yes
