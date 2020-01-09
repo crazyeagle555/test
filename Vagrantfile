@@ -7,3 +7,5 @@ Vagrant.configure("2") do |config|
     ansible.playbook = "deploy.yml"
      ansible.sudo = true
    end
+ 
+end
