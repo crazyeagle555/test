@@ -27,6 +27,12 @@
     groups: test-user
     append: yes
 
+- name: Install Git
+  yum:
+    name:
+      - Git
+    state: present
+
 - name: Install Python 3.6
   yum:
     name:
