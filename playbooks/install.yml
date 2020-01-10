@@ -1,6 +1,6 @@
 ---
 - name: Configure PostgreSQL server
-  hosts: localhost
+  hosts: all
   become: true
   roles:
     - { role: ANXS.postgresql }
@@ -8,7 +8,7 @@
     - ../environments/postgresql.yml
 
 - name: Configure nginx server
-  hosts: localhost
+  hosts: all
   become: true
   roles:
     - { role: nginx }
@@ -16,7 +16,7 @@
     - ../environments/nginx.yml
     
 - name: Configure PostgreSQL server
-  hosts: localhost
+  hosts: all
   become: true
   roles:
     - { role: python-app } 
