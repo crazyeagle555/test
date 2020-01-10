@@ -8,7 +8,7 @@
          export POSTGRESQL_URL=postgresql://test_user:DMg00LhU@127.0.0.1/app
          flask db upgrade
   args:
-  chdir: /home/test_user/app
+    chdir: /home/test_user/app
 
 - name: Create systemd service
   copy:
