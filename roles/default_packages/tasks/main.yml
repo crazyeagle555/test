@@ -30,7 +30,7 @@
 - name: Install Git
   yum:
     name:
-      - Git
+      - git
     state: present
 
 - name: Install Python 3.6
